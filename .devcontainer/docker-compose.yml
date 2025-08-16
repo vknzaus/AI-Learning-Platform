@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   app:
@@ -10,24 +10,39 @@ services:
     user: node
     environment:
       - NODE_ENV=development
+      - DATABASE_URL=postgresql://ailearning:postgres@postgres:5432/funlabs_ai
+      - REDIS_URL=redis://redis:6379
     ports:
-      - "3000:3000"  # Frontend React app
-      - "5000:5000"  # Backend Express server
+      - "3000:3000" # Frontend React app
+      - "5000:5000" # Backend Express server
+    depends_on:
+      - postgres
+      - redis
     networks:
       - dev-network
 
-  # Optional: Add a PostgreSQL database for future use
-  db:
-    image: postgres:15
+  postgres:
+    image: postgres:15-alpine
     restart: unless-stopped
     environment:
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_USER: postgres
       POSTGRES_DB: funlabs_ai
-    ports:
-      - "5432:5432"
+      POSTGRES_USER: ailearning
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_HOST_AUTH_METHOD: trust
     volumes:
       - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - dev-network
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    volumes:
+      - redis-data:/data
+    ports:
+      - "6379:6379"
     networks:
       - dev-network
 
@@ -37,3 +52,4 @@ networks:
 
 volumes:
   postgres-data:
+  redis-data:
