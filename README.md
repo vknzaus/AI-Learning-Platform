@@ -11,12 +11,14 @@ A modern, Duolingo-inspired learning platform designed to make AI and ML concept
 ## ✨ Features
 
 ### 🎨 Modern UI/UX
+
 - **Dark Theme**: Authentic Duolingo-inspired dark design
-- **Gradient Headers**: Beautiful centered gradient titles  
+- **Gradient Headers**: Beautiful centered gradient titles
 - **Gamification**: Gems 💎 and hearts ❤️ system
 - **Responsive Design**: Works perfectly on all devices
 
 ### 📚 Learning Platform
+
 - **Interactive Lessons**: Engaging AI/ML content
 - **Practice Mode**: Hands-on coding exercises
 - **Leaderboards**: Competitive learning with rankings
@@ -24,6 +26,7 @@ A modern, Duolingo-inspired learning platform designed to make AI and ML concept
 - **Topic Management**: Organized learning paths
 
 ### 🛠️ Technical Features
+
 - **Full-Stack TypeScript**: Type-safe development
 - **Real-time Updates**: Instant feedback and progress
 - **Database Integration**: PostgreSQL with Prisma ORM
@@ -33,12 +36,14 @@ A modern, Duolingo-inspired learning platform designed to make AI and ML concept
 ## 🏗️ Tech Stack
 
 ### Frontend
+
 - **React 19** with TypeScript
 - **Vite** for blazing fast development
 - **Tailwind CSS** for styling
 - **Custom Components** with dark theme
 
-### Backend  
+### Backend
+
 - **Node.js** with Express
 - **TypeScript** for type safety
 - **Prisma ORM** for database management
@@ -46,6 +51,7 @@ A modern, Duolingo-inspired learning platform designed to make AI and ML concept
 - **Redis** for caching
 
 ### Development
+
 - **GitHub Codespaces** ready
 - **Docker** containerization
 - **ESLint & Prettier** for code quality
@@ -54,11 +60,13 @@ A modern, Duolingo-inspired learning platform designed to make AI and ML concept
 ## 🚀 Quick Start
 
 ### Option 1: GitHub Codespaces (Recommended)
-1. Click "Code" → "Create codespace on main" 
+
+1. Click "Code" → "Create codespace on main"
 2. Wait for automatic setup to complete
 3. Start developing immediately!
 
 ### Option 2: Local Development
+
 ```bash
 # Clone the repository
 git clone https://github.com/vknzaus/AI-Learning-Platform.git
@@ -70,7 +78,7 @@ cd AI-Learning-Platform
 # Start backend (terminal 1)
 cd backend && npm run dev
 
-# Start frontend (terminal 2)  
+# Start frontend (terminal 2)
 cd frontend && npm run dev
 ```
 
@@ -114,6 +122,7 @@ AI-Learning-Platform/
 ## 🔧 Development Scripts
 
 ### Setup Scripts
+
 ```bash
 # Automatic setup (used by Codespaces)
 ./setup-dev.sh --auto
@@ -121,11 +130,12 @@ AI-Learning-Platform/
 # Full manual setup
 ./setup-dev.sh --full
 
-# Full setup with database initialization  
+# Full setup with database initialization
 ./setup-dev.sh --full --database
 ```
 
 ### Backend Commands
+
 ```bash
 cd backend
 
@@ -139,7 +149,8 @@ npx prisma db seed         # Seed database with test data
 npx prisma generate        # Generate Prisma client
 ```
 
-### Frontend Commands  
+### Frontend Commands
+
 ```bash
 cd frontend
 
@@ -156,18 +167,20 @@ npm run preview
 ## 🌐 Available URLs
 
 When running locally:
+
 - **Frontend**: http://localhost:3000
-- **Backend API**: http://localhost:5000  
+- **Backend API**: http://localhost:5000
 - **Database Studio**: http://localhost:5555 (when running `npx prisma studio`)
 
 ## 🎯 Current Features Status
 
 ### ✅ Completed
+
 - [x] Modern dark theme UI with Duolingo inspiration
 - [x] Centered gradient header with gamification elements
 - [x] Sidebar navigation with multiple sections
 - [x] Practice mode with interactive exercises
-- [x] Leaderboards with competitive rankings  
+- [x] Leaderboards with competitive rankings
 - [x] Profile system with progress tracking
 - [x] Topic management and display
 - [x] Database integration with PostgreSQL
@@ -176,6 +189,7 @@ When running locally:
 - [x] GitHub Codespaces integration
 
 ### 🚧 In Development
+
 - [ ] User authentication system
 - [ ] Real-time multiplayer features
 - [ ] Advanced gamification (streaks, badges, XP)
@@ -193,6 +207,7 @@ When running locally:
 ## 🛠️ Development Environment
 
 This project is optimized for **GitHub Codespaces** with:
+
 - Pre-configured development containers
 - Automatic dependency installation
 - Database setup and seeding
@@ -206,6 +221,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## 🙋‍♂️ Support
 
 Having issues? Check out:
+
 - [Issues](https://github.com/vknzaus/AI-Learning-Platform/issues) for bug reports
 - [Discussions](https://github.com/vknzaus/AI-Learning-Platform/discussions) for questions
 - [Wiki](https://github.com/vknzaus/AI-Learning-Platform/wiki) for detailed docs

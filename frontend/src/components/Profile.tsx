@@ -160,9 +160,7 @@ export const Profile: React.FC<ProfileProps> = ({ className = "" }) => {
       {/* Header */}
       <div className="text-center">
         <div className="text-8xl mb-4">🙋‍♂️</div>
-        <h1 className="text-4xl font-black text-white mb-2">
-          Your Profile
-        </h1>
+        <h1 className="text-4xl font-black text-white mb-2">Your Profile</h1>
         <p className="text-lg text-gray-400 font-medium">
           Track your AI learning journey! 📈
         </p>
@@ -174,17 +172,13 @@ export const Profile: React.FC<ProfileProps> = ({ className = "" }) => {
           <div className="text-3xl font-black text-teal-400">
             {userStats.totalPoints}
           </div>
-          <div className="text-sm font-bold text-teal-300">
-            Total Points
-          </div>
+          <div className="text-sm font-bold text-teal-300">Total Points</div>
         </div>
         <div className="bg-slate-800 border border-blue-500 rounded-2xl p-4 text-center">
           <div className="text-3xl font-black text-blue-400">
             {userStats.currentLevel}
           </div>
-          <div className="text-sm font-bold text-blue-300">
-            Current Level
-          </div>
+          <div className="text-sm font-bold text-blue-300">Current Level</div>
         </div>
         <div className="bg-slate-800 border border-yellow-500 rounded-2xl p-4 text-center">
           <div className="text-3xl font-black text-yellow-400">
@@ -196,9 +190,7 @@ export const Profile: React.FC<ProfileProps> = ({ className = "" }) => {
           <div className="text-3xl font-black text-purple-400">
             {userStats.totalLessons}
           </div>
-          <div className="text-sm font-bold text-purple-300">
-            Lessons Done
-          </div>
+          <div className="text-sm font-bold text-purple-300">Lessons Done</div>
         </div>
       </div>
 
@@ -206,9 +198,7 @@ export const Profile: React.FC<ProfileProps> = ({ className = "" }) => {
       <div className="max-w-2xl mx-auto">
         <div className="bg-slate-800 border-2 border-slate-700 rounded-3xl p-6">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-xl font-black text-white">
-              Level Progress
-            </h3>
+            <h3 className="text-xl font-black text-white">Level Progress</h3>
             <div className="text-sm font-bold text-gray-400">
               Level {userStats.currentLevel} → {userStats.currentLevel + 1}
             </div>
@@ -292,16 +282,12 @@ export const Profile: React.FC<ProfileProps> = ({ className = "" }) => {
             </div>
 
             <div className="bg-slate-800 border-2 border-slate-700 rounded-3xl p-6">
-              <h3 className="text-xl font-black text-white mb-4">
-                🎯 Goals
-              </h3>
+              <h3 className="text-xl font-black text-white mb-4">🎯 Goals</h3>
               <div className="space-y-4">
                 <div>
                   <div className="flex justify-between mb-2">
                     <span className="text-gray-400">Daily Goal</span>
-                    <span className="font-bold text-teal-400">
-                      3/3 lessons
-                    </span>
+                    <span className="font-bold text-teal-400">3/3 lessons</span>
                   </div>
                   <div className="w-full bg-slate-700 rounded-full h-2">
                     <div className="bg-teal-500 h-2 rounded-full w-full"></div>
@@ -359,9 +345,7 @@ export const Profile: React.FC<ProfileProps> = ({ className = "" }) => {
                   <div className="flex-1">
                     <h4
                       className={`font-black ${
-                        achievement.earned
-                          ? "text-yellow-400"
-                          : "text-gray-500"
+                        achievement.earned ? "text-yellow-400" : "text-gray-500"
                       }`}
                     >
                       {achievement.name}
@@ -437,9 +421,7 @@ export const Profile: React.FC<ProfileProps> = ({ className = "" }) => {
                 <div className="flex items-center space-x-4 p-3 bg-purple-900/20 rounded-2xl">
                   <div className="text-2xl">⚡</div>
                   <div className="flex-1">
-                    <div className="font-bold text-white">
-                      Speed Bonus!
-                    </div>
+                    <div className="font-bold text-white">Speed Bonus!</div>
                     <div className="text-sm text-gray-400">
                       Completed lesson in 1:45 minutes
                     </div>
@@ -450,9 +432,7 @@ export const Profile: React.FC<ProfileProps> = ({ className = "" }) => {
                 <div className="flex items-center space-x-4 p-3 bg-yellow-900/20 rounded-2xl">
                   <div className="text-2xl">🏆</div>
                   <div className="flex-1">
-                    <div className="font-bold text-white">
-                      New Achievement!
-                    </div>
+                    <div className="font-bold text-white">New Achievement!</div>
                     <div className="text-sm text-gray-400">
                       Earned "Lightning Fast" badge
                     </div>

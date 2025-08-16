@@ -117,9 +117,7 @@ export const TopicCard = ({ topic, onStartLearning }: TopicCardProps) => {
             <span className="text-xs font-bold text-gray-400">
               Ready to start!
             </span>
-            <span className="text-xs font-bold text-teal-400">
-              0% Complete
-            </span>
+            <span className="text-xs font-bold text-teal-400">0% Complete</span>
           </div>
           <div className="w-full bg-slate-600 rounded-full h-2 overflow-hidden">
             <div className="bg-gradient-to-r from-teal-400 to-blue-400 h-2 rounded-full w-0 group-hover:w-1/4 transition-all duration-1000"></div>

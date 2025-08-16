@@ -14,21 +14,25 @@ Thank you for your interest in contributing to the FunLabs AI Learning Platform!
 ## Development Workflow
 
 ### 1. Create a Feature Branch
+
 ```bash
 git checkout -b feature/your-feature-name
 ```
 
 ### 2. Make Your Changes
+
 - Follow the existing code style and conventions
 - Write clear, descriptive commit messages
 - Test your changes thoroughly
 
 ### 3. Code Quality
+
 - Run linting: `npm run lint` (in both frontend and backend)
 - Ensure TypeScript compilation succeeds
 - Test in both development and production builds
 
 ### 4. Submit a Pull Request
+
 - Push your changes to your fork
 - Create a detailed Pull Request with:
   - Clear description of changes
@@ -38,12 +42,14 @@ git checkout -b feature/your-feature-name
 ## Code Style
 
 ### Frontend (React/TypeScript)
+
 - Use functional components with hooks
 - Follow the existing dark theme patterns
 - Keep components focused and reusable
 - Use TypeScript types consistently
 
 ### Backend (Node.js/Express)
+
 - Use async/await for asynchronous operations
 - Follow RESTful API conventions
 - Add proper error handling
@@ -59,24 +65,28 @@ git checkout -b feature/your-feature-name
 ## Areas for Contribution
 
 ### 🎨 Frontend
+
 - UI/UX improvements
 - New learning components
 - Mobile responsiveness
 - Accessibility enhancements
 
 ### 🔧 Backend
+
 - API endpoints
 - Database optimizations
 - Authentication features
 - Performance improvements
 
 ### 📚 Content
+
 - Learning materials
 - Documentation
 - Code examples
 - Tutorials
 
 ### 🧪 Testing
+
 - Unit tests
 - Integration tests
 - E2E testing
