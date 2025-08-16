@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { Topic, topicsApi } from "./services/api";
+import { useEffect, useState } from "react";
+import type { Topic } from "./services/api";
+import { topicsApi } from "./services/api";
 import "./App.css";
 
 function App() {
@@ -53,9 +54,8 @@ function App() {
           </button>
           <button
             onClick={() => {
-              fetch(
-                "https://refactored-chainsaw-wr4q59974jxcv5pg-5000.app.github.dev/api/topics"
-              )
+              const testUrl = `${import.meta.env.VITE_API_BASE_URL || "http://localhost:8000/api"}/topics`;
+              fetch(testUrl)
                 .then((response) => response.json())
                 .then((data) => {
                   console.log("Manual test success:", data);

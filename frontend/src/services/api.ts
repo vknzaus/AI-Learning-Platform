@@ -1,12 +1,7 @@
-import axios from "axios";
+import { getApiUrl } from "../config/api";
 
-// Use port 8000 since it's accessible
-const API_BASE_URL =
-  "https://refactored-chainsaw-wr4q59974jxxcv5pg-8000.app.github.dev/api";
-
-console.log("API_BASE_URL:", API_BASE_URL);
-
-console.log("Computed API_BASE_URL:", API_BASE_URL);
+console.log("API Configuration loaded");
+console.log("Base URL:", getApiUrl(""));
 console.log("Current hostname:", window.location.hostname);
 
 export interface Topic {
@@ -32,9 +27,10 @@ export interface Lesson {
 export const topicsApi = {
   getAll: async (): Promise<{ data: Topic[] }> => {
     try {
-      console.log("Fetching from:", `${API_BASE_URL}/topics`);
+      const url = getApiUrl("/topics");
+      console.log("Fetching from:", url);
 
-      const response = await fetch(`${API_BASE_URL}/topics`, {
+      const response = await fetch(url, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

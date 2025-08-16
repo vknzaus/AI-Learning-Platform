@@ -1,6 +1,6 @@
 import app from "./app";
 
-const PORT = process.env.PORT || 8000;
+const PORT = Number(process.env.PORT) || 8000;
 
 // Bind to 0.0.0.0 to allow external connections (required for Codespaces)
 app.listen(PORT, "0.0.0.0", () => {
