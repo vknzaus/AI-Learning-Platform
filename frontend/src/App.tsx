@@ -27,6 +27,7 @@ import { Sidebar } from "./components/Sidebar";
 import { Practice } from "./components/Practice";
 import { Leaderboards } from "./components/Leaderboards";
 import { Profile } from "./components/Profile";
+import { AuthProvider } from "./contexts/AuthContext";
 import "./App.css";
 
 function App() {
@@ -148,25 +149,26 @@ function App() {
   // ============================================================================
 
   return (
-    <div className="min-h-screen bg-gray-900 relative">
-      {/* Sidebar - Overlay positioned */}
-      <Sidebar
-        isOpen={sidebarOpen}
-        onToggle={() => setSidebarOpen(!sidebarOpen)}
-        onNavigate={handleNavigation}
-        currentSection={currentSection}
-      />
-
-      {/* Main Content Area - Fixed width, no shifting */}
-      <div className="flex flex-col min-h-screen">
-        {/* Header */}
-        <Header
-          onMenuToggle={() => setSidebarOpen(!sidebarOpen)}
-          isSidebarOpen={sidebarOpen}
+    <AuthProvider>
+      <div className="min-h-screen bg-gray-900 relative">
+        {/* Sidebar - Overlay positioned */}
+        <Sidebar
+          isOpen={sidebarOpen}
+          onToggle={() => setSidebarOpen(!sidebarOpen)}
+          onNavigate={handleNavigation}
+          currentSection={currentSection}
         />
 
-        {/* Main Content */}
-        <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+        {/* Main Content Area - Fixed width, no shifting */}
+        <div className="flex flex-col min-h-screen">
+          {/* Header */}
+          <Header
+            onMenuToggle={() => setSidebarOpen(!sidebarOpen)}
+            isSidebarOpen={sidebarOpen}
+          />
+
+          {/* Main Content */}
+          <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
           {currentSection === "dashboard" && (
             <>
               {/* Topics Section */}
@@ -279,6 +281,7 @@ function App() {
         </main>
       </div>
     </div>
+    </AuthProvider>
   );
 }
 
