@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  app:
+    image: mcr.microsoft.com/devcontainers/javascript-node:20
+    volumes:
+      - ../..:/workspaces:cached
+    working_dir: /workspaces/AI-Learning-Platform
+    command: sleep infinity
+    user: node
+    environment:
+      - NODE_ENV=development
+    ports:
+      - "3000:3000"  # Frontend React app
+      - "5000:5000"  # Backend Express server
+    networks:
+      - dev-network
+
+  # Optional: Add a PostgreSQL database for future use
+  db:
+    image: postgres:15
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: funlabs_ai
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - dev-network
+
+networks:
+  dev-network:
+    driver: bridge
+
+volumes:
+  postgres-data:
