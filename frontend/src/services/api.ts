@@ -5,15 +5,18 @@ const getApiBaseUrl = () => {
   if (import.meta.env.VITE_API_BASE_URL) {
     return import.meta.env.VITE_API_BASE_URL;
   }
-  
+
   // Auto-detect GitHub Codespaces
   const hostname = window.location.hostname;
-  if (hostname.includes('.github.dev')) {
-    // Extract the codespace identifier and create backend URL
-    const codespaceName = hostname.split('.')[0];
-    return `https://${codespaceName}-5000.app.github.dev/api`;
+  if (hostname.includes(".github.dev")) {
+    // Extract the codespace identifier (remove port from hostname)
+    // Format: codespace-name-port.app.github.dev -> codespace-name-5000.app.github.dev
+    const parts = hostname.split('-');
+    parts.pop(); // removes "5173.app.github.dev"
+    const baseCodespace = parts.join('-'); // rejoins "refactored-chainsaw-wr4q59974jxxcv5pg"
+    return `https://${baseCodespace}-5000.app.github.dev/api`;
   }
-  
+
   // Default to localhost
   return "http://localhost:5000/api";
 };
@@ -23,6 +26,7 @@ const API_BASE_URL = getApiBaseUrl();
 console.log("API Configuration loaded");
 console.log("Base URL:", API_BASE_URL);
 console.log("Current hostname:", window.location.hostname);
+console.log("Detected environment:", window.location.hostname.includes(".github.dev") ? "GitHub Codespaces" : "Local development");
 
 export interface Topic {
   id: string;
@@ -60,10 +64,15 @@ export const topicsApi = {
       });
 
       console.log("Response status:", response.status);
-      console.log("Response headers:", Object.fromEntries(response.headers.entries()));
+      console.log(
+        "Response headers:",
+        Object.fromEntries(response.headers.entries())
+      );
 
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status} - ${response.statusText}`);
+        throw new Error(
+          `HTTP error! status: ${response.status} - ${response.statusText}`
+        );
       }
 
       const data = await response.json();
@@ -72,9 +81,9 @@ export const topicsApi = {
     } catch (error) {
       console.error("Fetch error:", error);
       console.error("Error details:", {
-        message: error instanceof Error ? error.message : 'Unknown error',
-        name: error instanceof Error ? error.name : 'Unknown',
-        stack: error instanceof Error ? error.stack : undefined
+        message: error instanceof Error ? error.message : "Unknown error",
+        name: error instanceof Error ? error.name : "Unknown",
+        stack: error instanceof Error ? error.stack : undefined,
       });
       throw error;
     }

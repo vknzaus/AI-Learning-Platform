@@ -60,13 +60,16 @@ function App() {
                   return `${import.meta.env.VITE_API_BASE_URL}/topics`;
                 }
                 const hostname = window.location.hostname;
-                if (hostname.includes('.github.dev')) {
-                  const codespaceName = hostname.split('.')[0];
-                  return `https://${codespaceName}-5000.app.github.dev/api/topics`;
+                if (hostname.includes(".github.dev")) {
+                  // Extract the codespace identifier (remove port from hostname)
+                  const parts = hostname.split('-');
+                  parts.pop(); // removes "5173.app.github.dev"
+                  const baseCodespace = parts.join('-'); // rejoins base codespace name
+                  return `https://${baseCodespace}-5000.app.github.dev/api/topics`;
                 }
                 return "http://localhost:5000/api/topics";
               };
-              
+
               const testUrl = getTestUrl();
               console.log("Testing connection to:", testUrl);
               fetch(testUrl)
