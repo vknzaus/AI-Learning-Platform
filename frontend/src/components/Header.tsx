@@ -20,22 +20,22 @@ export const Header = ({
     switch (connectionStatus) {
       case 'connected':
         return (
-          <div className="flex items-center space-x-2 text-sm text-duogreen-600 font-medium">
-            <div className="w-2 h-2 bg-duogreen-500 rounded-full animate-pulse"></div>
+          <div className="flex items-center space-x-2 text-sm text-teal-400 font-medium">
+            <div className="w-2 h-2 bg-teal-400 rounded-full animate-pulse"></div>
             <span>Connected • {topicsCount} courses loaded</span>
           </div>
         );
       case 'testing':
         return (
-          <div className="flex items-center space-x-2 text-sm text-duoblue-600 font-medium">
-            <div className="w-2 h-2 bg-duoblue-500 rounded-full animate-pulse"></div>
+          <div className="flex items-center space-x-2 text-sm text-blue-400 font-medium">
+            <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
             <span>Loading courses...</span>
           </div>
         );
       default:
         return (
-          <div className="flex items-center space-x-2 text-sm text-duogray-500 font-medium">
-            <div className="w-2 h-2 bg-duogray-400 rounded-full"></div>
+          <div className="flex items-center space-x-2 text-sm text-gray-400 font-medium">
+            <div className="w-2 h-2 bg-gray-500 rounded-full"></div>
             <span>Offline</span>
           </div>
         );
@@ -43,19 +43,19 @@ export const Header = ({
   };
 
   return (
-    <header className="bg-white border-b border-duogray-100 sticky top-0 z-50 backdrop-blur-sm bg-white/95 shadow-sm">
+    <header className="bg-gray-800 border-b border-gray-700 sticky top-0 z-50 backdrop-blur-sm bg-gray-800/95 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo and Title - More Prominent */}
           <div className="flex items-center space-x-4">
-            {/* Menu Toggle Button with Duolingo styling */}
+            {/* Menu Toggle Button with Dark theme styling */}
             {onMenuToggle && (
               <button
                 onClick={onMenuToggle}
-                className="p-2 rounded-xl hover:bg-duogreen-50 active:bg-duogreen-100 transition-all duration-200 border border-duogreen-200 hover:border-duogreen-300"
+                className="p-2 rounded-xl hover:bg-slate-700 active:bg-slate-600 transition-all duration-200 border border-slate-600 hover:border-slate-500"
                 aria-label="Toggle menu"
               >
-                <span className={`text-duogreen-600 transition-transform duration-200 text-lg ${isSidebarOpen ? 'rotate-90' : ''}`}>
+                <span className={`text-white transition-transform duration-200 text-lg ${isSidebarOpen ? 'rotate-90' : ''}`}>
                   ☰
                 </span>
               </button>
@@ -82,35 +82,35 @@ export const Header = ({
               {getStatusIndicator()}
             </div>
             
-            {/* Test Connection Button with Duolingo styling */}
+            {/* Test Connection Button with Dark theme styling */}
             {connectionStatus === 'disconnected' && (
               <Button 
                 variant="outline" 
                 size="sm" 
                 onClick={onTestConnection}
-                className="hidden sm:flex bg-duogreen-50 border-duogreen-200 text-duogreen-700 hover:bg-duogreen-100 hover:border-duogreen-300 transition-all duration-200 font-semibold"
+                className="hidden sm:flex bg-slate-700 border-slate-600 text-gray-300 hover:bg-slate-600 hover:border-slate-500 transition-all duration-200 font-semibold"
               >
                 🔌 Test Connection
               </Button>
             )}
             
-            {/* Navigation Links with Duolingo styling */}
+            {/* Navigation Links with Dark theme styling */}
             <div className="hidden md:flex items-center space-x-6">
-              <a href="#" className="text-duogray-700 hover:text-duogreen-600 font-semibold text-sm transition-all duration-200 px-3 py-2 rounded-lg hover:bg-duogreen-50">
+              <a href="#" className="text-gray-300 hover:text-teal-400 font-semibold text-sm transition-all duration-200 px-3 py-2 rounded-lg hover:bg-slate-700">
                 📚 Courses
               </a>
-              <a href="#" className="text-duogray-700 hover:text-duoblue-600 font-semibold text-sm transition-all duration-200 px-3 py-2 rounded-lg hover:bg-duoblue-50">
+              <a href="#" className="text-gray-300 hover:text-blue-400 font-semibold text-sm transition-all duration-200 px-3 py-2 rounded-lg hover:bg-slate-700">
                 🎓 Programs  
               </a>
-              <a href="#" className="text-duogray-700 hover:text-duopurple-600 font-semibold text-sm transition-all duration-200 px-3 py-2 rounded-lg hover:bg-duopurple-50">
+              <a href="#" className="text-gray-300 hover:text-purple-400 font-semibold text-sm transition-all duration-200 px-3 py-2 rounded-lg hover:bg-slate-700">
                 🏢 For Business
               </a>
               
-              {/* Sign In Button with Duolingo styling */}
+              {/* Sign In Button with Dark theme styling */}
               <Button 
                 variant="outline" 
                 size="sm"
-                className="bg-gradient-to-r from-duoblue-500 to-duogreen-500 text-white border-none hover:from-duoblue-600 hover:to-duogreen-600 font-bold shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105"
+                className="bg-gradient-to-r from-teal-500 to-blue-500 text-white border-none hover:from-teal-600 hover:to-blue-600 font-bold shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105"
               >
                 Sign In
               </Button>
@@ -121,7 +121,7 @@ export const Header = ({
               <Button 
                 variant="outline" 
                 size="sm"
-                className="bg-duoblue-50 border-duoblue-200 text-duoblue-700 hover:bg-duoblue-100"
+                className="bg-slate-700 border-slate-600 text-gray-300 hover:bg-slate-600"
               >
                 Menu
               </Button>

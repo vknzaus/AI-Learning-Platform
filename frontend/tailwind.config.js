@@ -111,16 +111,16 @@ export default {
       },
       // Add custom animations for Duolingo-style interactions
       animation: {
-        'bounce-subtle': 'bounce 1s infinite',
-        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'wiggle': 'wiggle 1s ease-in-out infinite',
+        "bounce-subtle": "bounce 1s infinite",
+        "pulse-slow": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        wiggle: "wiggle 1s ease-in-out infinite",
       },
       keyframes: {
         wiggle: {
-          '0%, 100%': { transform: 'rotate(-3deg)' },
-          '50%': { transform: 'rotate(3deg)' },
-        }
-      }
+          "0%, 100%": { transform: "rotate(-3deg)" },
+          "50%": { transform: "rotate(3deg)" },
+        },
+      },
     },
   },
   plugins: [],

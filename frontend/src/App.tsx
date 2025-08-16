@@ -140,7 +140,7 @@ function App() {
   // ============================================================================
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-duogray-50 via-white to-duoblue-50 relative">
+    <div className="min-h-screen bg-gray-900 relative">
       {/* Sidebar - Overlay positioned */}
       <Sidebar 
         isOpen={sidebarOpen} 
@@ -168,19 +168,19 @@ function App() {
               <div className="text-center mb-12">
                 <div className="mb-8">
                   <h1 className="text-5xl md:text-6xl font-black mb-6 leading-tight">
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-duogreen-600 via-duoblue-600 to-duopurple-600">
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-blue-400 to-purple-400">
                       Learn AI & ML
                     </span>
                   </h1>
                   
-                  <p className="text-xl text-duogray-600 max-w-3xl mx-auto leading-relaxed font-medium mb-6">
+                  <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed font-medium mb-6">
                     🚀 Master artificial intelligence through fun, interactive lessons! 
                     A simple, engaging way to learn complex concepts. 🧠✨
                   </p>
                 </div>
                 
                 <div className="mb-8">
-                  <button className="bg-gradient-to-r from-duogreen-500 to-duoblue-500 hover:from-duogreen-600 hover:to-duoblue-600 text-white font-black px-8 py-4 rounded-2xl text-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 border-2 border-white duo-button">
+                  <button className="bg-gradient-to-r from-teal-500 to-blue-500 hover:from-teal-600 hover:to-blue-600 text-white font-black px-8 py-4 rounded-2xl text-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 border-2 border-white duo-button">
                     🎯 Start Learning Today
                   </button>
                 </div>
@@ -189,10 +189,10 @@ function App() {
               {/* Topics Section */}
               <div className="mb-16">
                 <div className="text-center mb-10">
-                  <h2 className="text-4xl font-black text-duogray-800 mb-4">
+                  <h2 className="text-4xl font-black text-white mb-4">
                     🌟 Available Courses
                   </h2>
-                  <p className="text-lg text-duogray-600 max-w-2xl mx-auto font-medium">
+                  <p className="text-lg text-gray-400 max-w-2xl mx-auto font-medium">
                     Start your AI journey with these fun, bite-sized courses! 🚀
                   </p>
                 </div>
@@ -211,15 +211,15 @@ function App() {
                   </div>
                 ) : (
                   <div className="text-center py-12">
-                    <div className="bg-gradient-to-br from-duoyellow-50 to-duogreen-50 border-2 border-duoyellow-200 rounded-3xl p-12 max-w-lg mx-auto fun-card">
+                    <div className="bg-slate-800 border-2 border-yellow-600 rounded-3xl p-12 max-w-lg mx-auto fun-card">
                       <div className="text-6xl mb-4">🔍</div>
-                      <h3 className="text-2xl font-black text-duogray-800 mb-3">No courses available yet!</h3>
-                      <p className="text-duogray-600 font-medium mb-6">
+                      <h3 className="text-2xl font-black text-white mb-3">No courses available yet!</h3>
+                      <p className="text-gray-400 font-medium mb-6">
                         Our amazing courses are being prepared. Check back soon! 
                       </p>
                       <button 
                         onClick={handleRetry}
-                        className="bg-duoyellow-400 hover:bg-duoyellow-500 text-duoyellow-900 font-black px-6 py-3 rounded-2xl transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl duo-button"
+                        className="bg-yellow-500 hover:bg-yellow-600 text-yellow-900 font-black px-6 py-3 rounded-2xl transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl duo-button"
                       >
                         🔄 Refresh
                       </button>
@@ -235,10 +235,10 @@ function App() {
               {/* Topics Section for Learn AI */}
               <div className="mb-16">
                 <div className="text-center mb-10">
-                  <h2 className="text-4xl font-black text-duogray-800 mb-4">
+                  <h2 className="text-4xl font-black text-white mb-4">
                     🤖 Learn AI
                   </h2>
-                  <p className="text-lg text-duogray-600 max-w-2xl mx-auto font-medium">
+                  <p className="text-lg text-gray-400 max-w-2xl mx-auto font-medium">
                     Master AI fundamentals with interactive lessons! 🎓
                   </p>
                 </div>
@@ -257,15 +257,15 @@ function App() {
                   </div>
                 ) : (
                   <div className="text-center py-12">
-                    <div className="bg-gradient-to-br from-duoyellow-50 to-duogreen-50 border-2 border-duoyellow-200 rounded-3xl p-12 max-w-lg mx-auto fun-card">
+                    <div className="bg-slate-800 border-2 border-yellow-600 rounded-3xl p-12 max-w-lg mx-auto fun-card">
                       <div className="text-6xl mb-4">🔍</div>
-                      <h3 className="text-2xl font-black text-duogray-800 mb-3">No courses available yet!</h3>
-                      <p className="text-duogray-600 font-medium mb-6">
+                      <h3 className="text-2xl font-black text-white mb-3">No courses available yet!</h3>
+                      <p className="text-gray-400 font-medium mb-6">
                         Our amazing AI courses are being prepared. Check back soon! 
                       </p>
                       <button 
                         onClick={handleRetry}
-                        className="bg-duoyellow-400 hover:bg-duoyellow-500 text-duoyellow-900 font-black px-6 py-3 rounded-2xl transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl duo-button"
+                        className="bg-yellow-500 hover:bg-yellow-600 text-yellow-900 font-black px-6 py-3 rounded-2xl transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl duo-button"
                       >
                         🔄 Refresh
                       </button>
@@ -282,8 +282,8 @@ function App() {
           {currentSection === 'settings' && (
             <div className="text-center py-20">
               <div className="text-6xl mb-4">⚙️</div>
-              <h2 className="text-4xl font-black text-duogray-800 mb-4">Settings</h2>
-              <p className="text-lg text-duogray-600">Settings panel coming soon!</p>
+              <h2 className="text-4xl font-black text-white mb-4">Settings</h2>
+              <p className="text-lg text-gray-400">Settings panel coming soon!</p>
             </div>
           )}
         </main>

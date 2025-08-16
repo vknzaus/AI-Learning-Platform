@@ -70,21 +70,21 @@ const practiceExercises: PracticeExercise[] = [
 
 const getDifficultyColor = (difficulty: string) => {
   switch (difficulty) {
-    case 'Beginner': return 'bg-duogreen-100 text-duogreen-800 border-duogreen-300';
-    case 'Intermediate': return 'bg-duoblue-100 text-duoblue-800 border-duoblue-300';
-    case 'Advanced': return 'bg-duopurple-100 text-duopurple-800 border-duopurple-300';
-    default: return 'bg-duogray-100 text-duogray-800 border-duogray-300';
+    case 'Beginner': return 'bg-slate-700 text-teal-300 border-slate-600';
+    case 'Intermediate': return 'bg-slate-700 text-blue-300 border-slate-600';
+    case 'Advanced': return 'bg-slate-700 text-purple-300 border-slate-600';
+    default: return 'bg-slate-700 text-gray-300 border-slate-600';
   }
 };
 
 const getCardColor = (color: string) => {
   switch (color) {
-    case 'green': return 'border-duogreen-200 hover:border-duogreen-300 bg-duogreen-50';
-    case 'blue': return 'border-duoblue-200 hover:border-duoblue-300 bg-duoblue-50';
-    case 'purple': return 'border-duopurple-200 hover:border-duopurple-300 bg-duopurple-50';
-    case 'yellow': return 'border-duoyellow-200 hover:border-duoyellow-300 bg-duoyellow-50';
-    case 'red': return 'border-duored-200 hover:border-duored-300 bg-duored-50';
-    default: return 'border-duogray-200 hover:border-duogray-300 bg-duogray-50';
+    case 'green': return 'border-slate-600 hover:border-teal-500 bg-slate-800';
+    case 'blue': return 'border-slate-600 hover:border-blue-500 bg-slate-800';
+    case 'purple': return 'border-slate-600 hover:border-purple-500 bg-slate-800';
+    case 'yellow': return 'border-slate-600 hover:border-yellow-500 bg-slate-800';
+    case 'red': return 'border-slate-600 hover:border-red-500 bg-slate-800';
+    default: return 'border-slate-600 hover:border-gray-500 bg-slate-800';
   }
 };
 
@@ -101,33 +101,33 @@ export const Practice: React.FC<PracticeProps> = ({ className = '' }) => {
     <div className={`space-y-6 ${className}`}>
       {/* Header */}
       <div className="text-center">
-        <h1 className="text-4xl font-black text-duogray-800 mb-4">
+        <h1 className="text-4xl font-black text-white mb-4">
           🎯 Practice Zone
         </h1>
-        <p className="text-lg text-duogray-600 max-w-2xl mx-auto font-medium">
+        <p className="text-lg text-gray-400 max-w-2xl mx-auto font-medium">
           Sharpen your AI knowledge with fun, interactive exercises! 🚀
         </p>
       </div>
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto mb-8">
-        <div className="bg-duogreen-50 border-2 border-duogreen-200 rounded-2xl p-6 text-center">
-          <div className="text-duogreen-600 font-black text-3xl mb-2">{completedCount}</div>
-          <div className="text-duogreen-700 font-semibold">Completed</div>
+        <div className="bg-slate-800 border-2 border-teal-500 rounded-2xl p-6 text-center">
+          <div className="text-teal-400 font-black text-3xl mb-2">{completedCount}</div>
+          <div className="text-teal-300 font-semibold">Completed</div>
         </div>
-        <div className="bg-duoblue-50 border-2 border-duoblue-200 rounded-2xl p-6 text-center">
-          <div className="text-duoblue-600 font-black text-3xl mb-2">{totalPoints}</div>
-          <div className="text-duoblue-700 font-semibold">Points Earned</div>
+        <div className="bg-slate-800 border-2 border-blue-500 rounded-2xl p-6 text-center">
+          <div className="text-blue-400 font-black text-3xl mb-2">{totalPoints}</div>
+          <div className="text-blue-300 font-semibold">Points Earned</div>
         </div>
-        <div className="bg-duopurple-50 border-2 border-duopurple-200 rounded-2xl p-6 text-center">
-          <div className="text-duopurple-600 font-black text-3xl mb-2">{practiceExercises.length}</div>
-          <div className="text-duopurple-700 font-semibold">Total Exercises</div>
+        <div className="bg-slate-800 border-2 border-purple-500 rounded-2xl p-6 text-center">
+          <div className="text-purple-400 font-black text-3xl mb-2">{practiceExercises.length}</div>
+          <div className="text-purple-300 font-semibold">Total Exercises</div>
         </div>
       </div>
 
       {/* Practice Exercises */}
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-2xl font-black text-duogray-800 mb-6 text-center">
+        <h2 className="text-2xl font-black text-white mb-6 text-center">
           Available Exercises
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -149,25 +149,25 @@ export const Practice: React.FC<PracticeProps> = ({ className = '' }) => {
                 </div>
               </div>
               
-              <h3 className="text-xl font-black text-duogray-800 mb-2">
+              <h3 className="text-xl font-black text-white mb-2">
                 {exercise.title}
-                {exercise.completed && <span className="ml-2 text-duogreen-600">✓</span>}
+                {exercise.completed && <span className="ml-2 text-teal-400">✓</span>}
               </h3>
               
-              <p className="text-duogray-600 font-medium mb-4">
+              <p className="text-gray-400 font-medium mb-4">
                 {exercise.description}
               </p>
               
               <div className="flex items-center justify-between">
-                <div className="text-duoyellow-600 font-bold">
+                <div className="text-yellow-400 font-bold">
                   🪙 {exercise.points} points
                 </div>
                 <button 
                   className={`
                     px-4 py-2 rounded-xl font-bold text-sm transition-all duration-200
                     ${exercise.completed 
-                      ? 'bg-duogray-200 text-duogray-600 cursor-not-allowed' 
-                      : 'bg-duogreen-500 hover:bg-duogreen-600 text-white hover:scale-105'
+                      ? 'bg-slate-700 text-gray-500 cursor-not-allowed' 
+                      : 'bg-teal-500 hover:bg-teal-600 text-white hover:scale-105'
                     }
                   `}
                   disabled={exercise.completed}
