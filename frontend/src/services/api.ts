@@ -11,9 +11,9 @@ const getApiBaseUrl = () => {
   if (hostname.includes(".github.dev")) {
     // Extract the codespace identifier (remove port from hostname)
     // Format: codespace-name-port.app.github.dev -> codespace-name-5000.app.github.dev
-    const parts = hostname.split('-');
+    const parts = hostname.split("-");
     parts.pop(); // removes "5173.app.github.dev"
-    const baseCodespace = parts.join('-'); // rejoins "refactored-chainsaw-wr4q59974jxxcv5pg"
+    const baseCodespace = parts.join("-"); // rejoins "refactored-chainsaw-wr4q59974jxxcv5pg"
     return `https://${baseCodespace}-5000.app.github.dev/api`;
   }
 
@@ -26,7 +26,12 @@ const API_BASE_URL = getApiBaseUrl();
 console.log("API Configuration loaded");
 console.log("Base URL:", API_BASE_URL);
 console.log("Current hostname:", window.location.hostname);
-console.log("Detected environment:", window.location.hostname.includes(".github.dev") ? "GitHub Codespaces" : "Local development");
+console.log(
+  "Detected environment:",
+  window.location.hostname.includes(".github.dev")
+    ? "GitHub Codespaces"
+    : "Local development"
+);
 
 export interface Topic {
   id: string;

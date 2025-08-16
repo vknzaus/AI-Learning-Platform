@@ -62,9 +62,9 @@ function App() {
                 const hostname = window.location.hostname;
                 if (hostname.includes(".github.dev")) {
                   // Extract the codespace identifier (remove port from hostname)
-                  const parts = hostname.split('-');
+                  const parts = hostname.split("-");
                   parts.pop(); // removes "5173.app.github.dev"
-                  const baseCodespace = parts.join('-'); // rejoins base codespace name
+                  const baseCodespace = parts.join("-"); // rejoins base codespace name
                   return `https://${baseCodespace}-5000.app.github.dev/api/topics`;
                 }
                 return "http://localhost:5000/api/topics";
