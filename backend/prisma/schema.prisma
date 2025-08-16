@@ -1,0 +1,192 @@
+// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Users and Authentication
+model User {
+  id            String   @id @default(uuid())
+  email         String   @unique
+  username      String?  @unique
+  passwordHash  String?  @map("password_hash")
+  preferences   Json     @default("{}")
+  createdAt     DateTime @default(now()) @map("created_at")
+  
+  // Relations
+  lessonProgress    UserLessonProgress[]
+  questionProgress  UserQuestionProgress[]
+  achievements      UserAchievement[]
+  stats             UserStats?
+
+  @@map("users")
+}
+
+// Content Structure
+model Topic {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  description String?
+  orderIndex  Int      @map("order_index")
+  createdAt   DateTime @default(now()) @map("created_at")
+  
+  // Relations
+  lessons     Lesson[]
+
+  @@map("topics")
+}
+
+model Lesson {
+  id             String   @id @default(uuid())
+  topicId        String   @map("topic_id")
+  title          String
+  description    String?
+  difficulty     Difficulty
+  orderIndex     Int      @map("order_index")
+  prerequisites  Json     @default("[]")
+  createdAt      DateTime @default(now()) @map("created_at")
+  
+  // Relations
+  topic          Topic    @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  questions      Question[]
+  userProgress   UserLessonProgress[]
+
+  @@map("lessons")
+}
+
+model Question {
+  id            String       @id @default(uuid())
+  lessonId      String       @map("lesson_id")
+  type          QuestionType
+  content       Json
+  correctAnswer Json         @map("correct_answer")
+  explanation   String
+  difficulty    Difficulty
+  points        Int          @default(10)
+  orderIndex    Int          @map("order_index")
+  createdAt     DateTime     @default(now()) @map("created_at")
+  
+  // Relations
+  lesson        Lesson       @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+  userProgress  UserQuestionProgress[]
+
+  @@map("questions")
+}
+
+// Progress Tracking
+model UserLessonProgress {
+  id         String       @id @default(uuid())
+  userId     String       @map("user_id")
+  lessonId   String       @map("lesson_id")
+  status     LessonStatus @default(NOT_STARTED)
+  score      Int          @default(0)
+  timeSpent  Int          @default(0) @map("time_spent")
+  createdAt  DateTime     @default(now()) @map("created_at")
+  
+  // Relations
+  user       User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  lesson     Lesson       @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, lessonId])
+  @@map("user_lesson_progress")
+}
+
+model UserQuestionProgress {
+  id         String   @id @default(uuid())
+  userId     String   @map("user_id")
+  questionId String   @map("question_id")
+  isCorrect  Boolean  @map("is_correct")
+  timeTaken  Int?     @map("time_taken")
+  createdAt  DateTime @default(now()) @map("created_at")
+  
+  // Relations
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@map("user_question_progress")
+}
+
+// User Statistics
+model UserStats {
+  id                     String   @id @default(uuid())
+  userId                 String   @unique @map("user_id")
+  currentStreak          Int      @default(0) @map("current_streak")
+  longestStreak          Int      @default(0) @map("longest_streak")
+  totalQuestionsAnswered Int      @default(0) @map("total_questions_answered")
+  totalCorrectAnswers    Int      @default(0) @map("total_correct_answers")
+  totalTimeSpent         Int      @default(0) @map("total_time_spent")
+  totalPoints            Int      @default(0) @map("total_points")
+  lastActivityDate       DateTime? @map("last_activity_date")
+  createdAt              DateTime @default(now()) @map("created_at")
+  
+  // Relations
+  user                   User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("user_stats")
+}
+
+// Achievements System
+model Achievement {
+  id          String      @id @default(uuid())
+  name        String      @unique
+  description String?
+  criteria    Json
+  points      Int
+  badgeTier   BadgeTier   @map("badge_tier")
+  isActive    Boolean     @default(true) @map("is_active")
+  createdAt   DateTime    @default(now()) @map("created_at")
+  
+  // Relations
+  userAchievements UserAchievement[]
+
+  @@map("achievements")
+}
+
+model UserAchievement {
+  id            String      @id @default(uuid())
+  userId        String      @map("user_id")
+  achievementId String      @map("achievement_id")
+  earnedAt      DateTime    @default(now()) @map("earned_at")
+  
+  // Relations
+  user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  achievement   Achievement @relation(fields: [achievementId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, achievementId])
+  @@map("user_achievements")
+}
+
+// Enums
+enum QuestionType {
+  MULTIPLE_CHOICE
+  TRUE_FALSE
+  FILL_BLANK
+  MATCHING
+  DRAG_DROP
+  CODE_SNIPPET
+  IMAGE_BASED
+}
+
+enum Difficulty {
+  BEGINNER
+  INTERMEDIATE
+  ADVANCED
+}
+
+enum LessonStatus {
+  NOT_STARTED
+  IN_PROGRESS
+  COMPLETED
+  MASTERED
+}
+
+enum BadgeTier {
+  BRONZE
+  SILVER
+  GOLD
+  PLATINUM
+}
