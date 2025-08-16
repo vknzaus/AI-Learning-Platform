@@ -54,9 +54,21 @@ function App() {
           </button>
           <button
             onClick={() => {
-              const testUrl = `${
-                import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api"
-              }/topics`;
+              // Use the same logic as the API service
+              const getTestUrl = () => {
+                if (import.meta.env.VITE_API_BASE_URL) {
+                  return `${import.meta.env.VITE_API_BASE_URL}/topics`;
+                }
+                const hostname = window.location.hostname;
+                if (hostname.includes('.github.dev')) {
+                  const codespaceName = hostname.split('.')[0];
+                  return `https://${codespaceName}-5000.app.github.dev/api/topics`;
+                }
+                return "http://localhost:5000/api/topics";
+              };
+              
+              const testUrl = getTestUrl();
+              console.log("Testing connection to:", testUrl);
               fetch(testUrl)
                 .then((response) => response.json())
                 .then((data) => {
