@@ -3,12 +3,14 @@
 ## Branch Structure
 
 ### Main Branch (`main`)
+
 - **Purpose**: Production-ready, stable code
 - **Protection**: Only accept merge requests from `dev`
 - **Deployment**: Automatically deployed to production
 - **Status**: ✅ Stable with complete authentication system
 
-### Development Branch (`dev`) 
+### Development Branch (`dev`)
+
 - **Purpose**: Integration branch for new features
 - **Current Status**: Active development branch
 - **Features**: All main features + ongoing development
@@ -17,6 +19,7 @@
 ## Development Workflow
 
 ### 1. Feature Development
+
 ```bash
 # Start from dev branch
 git checkout dev
@@ -34,6 +37,7 @@ git push -u origin feature/feature-name
 ```
 
 ### 2. Integration Process
+
 ```bash
 # Switch to dev and update
 git checkout dev
@@ -45,6 +49,7 @@ git push origin dev
 ```
 
 ### 3. Release Process
+
 ```bash
 # When dev is stable and ready for release
 git checkout main
@@ -62,6 +67,7 @@ git push origin v1.x.x
 ## Current Development Status
 
 ### ✅ Completed Features (in `main`)
+
 - 🎨 Duolingo-inspired dark theme design
 - 🏠 Responsive header with centered gradient title
 - 💎 Gamification elements (gems and hearts)
@@ -72,28 +78,33 @@ git push origin v1.x.x
 - 🗃️ Database migrations and seed data
 
 ### 🔄 Ready for Development (in `dev`)
+
 All stable features are available for building upon.
 
 ## Demo Accounts Available
+
 - **Demo User**: `demo` / `demo123` (💎 250, ❤️ 5, Level 3)
-- **Student**: `student` / `student123` (💎 180, ❤️ 4, Level 2)  
+- **Student**: `student` / `student123` (💎 180, ❤️ 4, Level 2)
 - **Learner**: `learner` / `learner123` (💎 320, ❤️ 5, Level 4)
 
 ## Next Development Priorities
 
 ### Phase 1: Core Learning Features
+
 - [ ] Interactive lesson system
 - [ ] Progress tracking and persistence
 - [ ] Question types (multiple choice, drag-and-drop, coding)
 - [ ] XP and level calculation system
 
 ### Phase 2: Enhanced UX
+
 - [ ] Smooth animations and transitions
 - [ ] Sound effects and celebrations
 - [ ] Achievement system
 - [ ] Daily streaks and goals
 
 ### Phase 3: Advanced Features
+
 - [ ] Real-time multiplayer learning
 - [ ] AI-powered personalized learning paths
 - [ ] Advanced analytics and insights
@@ -102,6 +113,7 @@ All stable features are available for building upon.
 ## Development Commands
 
 ### Frontend Development
+
 ```bash
 cd frontend
 npm run dev          # Start development server (http://localhost:5173)
@@ -110,7 +122,8 @@ npm run preview      # Preview production build
 npm run lint         # Run ESLint
 ```
 
-### Backend Development  
+### Backend Development
+
 ```bash
 cd backend
 npm run dev          # Start backend server (http://localhost:5000)
@@ -121,11 +134,12 @@ npx prisma migrate dev  # Run database migrations
 ```
 
 ### Full Stack Development
+
 ```bash
 # Terminal 1: Backend
 cd backend && npm run dev
 
-# Terminal 2: Frontend  
+# Terminal 2: Frontend
 cd frontend && npm run dev
 
 # Terminal 3: Database (optional)
@@ -135,12 +149,13 @@ cd backend && npx prisma studio
 ## Git Best Practices
 
 ### Commit Message Format
+
 ```
 type(scope): description
 
 Types:
 - feat: New feature
-- fix: Bug fix  
+- fix: Bug fix
 - docs: Documentation
 - style: Formatting, missing semicolons, etc.
 - refactor: Code restructuring without feature changes
@@ -154,6 +169,7 @@ docs(readme): update development setup instructions
 ```
 
 ### Branch Naming
+
 - `feature/feature-name` - New features
 - `fix/bug-description` - Bug fixes
 - `docs/documentation-update` - Documentation changes

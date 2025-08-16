@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
-import { useAuth } from '../contexts/AuthContext';
+import React, { useState } from "react";
+import { useAuth } from "../contexts/AuthContext";
 
 interface SignInModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-export const SignInModal: React.FC<SignInModalProps> = ({ isOpen, onClose }) => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+export const SignInModal: React.FC<SignInModalProps> = ({
+  isOpen,
+  onClose,
+}) => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [showDemoAccounts, setShowDemoAccounts] = useState(true);
 
   const { signIn } = useAuth();
@@ -18,29 +21,32 @@ export const SignInModal: React.FC<SignInModalProps> = ({ isOpen, onClose }) => 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    setError('');
+    setError("");
 
     try {
       const success = await signIn(username, password);
       if (success) {
         onClose();
-        setUsername('');
-        setPassword('');
+        setUsername("");
+        setPassword("");
       } else {
-        setError('Invalid username or password. Please try again.');
+        setError("Invalid username or password. Please try again.");
       }
     } catch {
-      setError('An error occurred. Please try again.');
+      setError("An error occurred. Please try again.");
     } finally {
       setIsLoading(false);
     }
   };
 
-  const handleDemoLogin = async (demoUsername: string, demoPassword: string) => {
+  const handleDemoLogin = async (
+    demoUsername: string,
+    demoPassword: string
+  ) => {
     setUsername(demoUsername);
     setPassword(demoPassword);
     setIsLoading(true);
-    setError('');
+    setError("");
 
     try {
       const success = await signIn(demoUsername, demoPassword);
@@ -48,7 +54,7 @@ export const SignInModal: React.FC<SignInModalProps> = ({ isOpen, onClose }) => 
         onClose();
       }
     } catch {
-      setError('Demo login failed. Please try again.');
+      setError("Demo login failed. Please try again.");
     } finally {
       setIsLoading(false);
     }
@@ -71,9 +77,7 @@ export const SignInModal: React.FC<SignInModalProps> = ({ isOpen, onClose }) => 
         {/* Header */}
         <div className="text-center mb-6">
           <div className="text-4xl mb-3">🚀</div>
-          <h2 className="text-2xl font-black text-white mb-2">
-            Welcome Back!
-          </h2>
+          <h2 className="text-2xl font-black text-white mb-2">Welcome Back!</h2>
           <p className="text-gray-400 text-sm">
             Sign in to continue your AI learning journey
           </p>
@@ -93,14 +97,16 @@ export const SignInModal: React.FC<SignInModalProps> = ({ isOpen, onClose }) => 
             </div>
             <div className="space-y-2">
               <button
-                onClick={() => handleDemoLogin('demo', 'demo123')}
+                onClick={() => handleDemoLogin("demo", "demo123")}
                 className="w-full text-left p-3 bg-slate-600 hover:bg-slate-500 rounded-lg transition-colors"
                 disabled={isLoading}
               >
                 <div className="flex items-center space-x-3">
                   <span className="text-2xl">👨‍💻</span>
                   <div>
-                    <div className="text-white font-medium text-sm">Demo User</div>
+                    <div className="text-white font-medium text-sm">
+                      Demo User
+                    </div>
                     <div className="text-gray-400 text-xs">demo / demo123</div>
                   </div>
                   <div className="ml-auto text-right">
@@ -110,15 +116,19 @@ export const SignInModal: React.FC<SignInModalProps> = ({ isOpen, onClose }) => 
                 </div>
               </button>
               <button
-                onClick={() => handleDemoLogin('student', 'student123')}
+                onClick={() => handleDemoLogin("student", "student123")}
                 className="w-full text-left p-3 bg-slate-600 hover:bg-slate-500 rounded-lg transition-colors"
                 disabled={isLoading}
               >
                 <div className="flex items-center space-x-3">
                   <span className="text-2xl">👩‍🎓</span>
                   <div>
-                    <div className="text-white font-medium text-sm">Student</div>
-                    <div className="text-gray-400 text-xs">student / student123</div>
+                    <div className="text-white font-medium text-sm">
+                      Student
+                    </div>
+                    <div className="text-gray-400 text-xs">
+                      student / student123
+                    </div>
                   </div>
                   <div className="ml-auto text-right">
                     <div className="text-blue-400 text-xs">💎 180</div>
@@ -179,7 +189,7 @@ export const SignInModal: React.FC<SignInModalProps> = ({ isOpen, onClose }) => 
                 <span>Signing in...</span>
               </div>
             ) : (
-              'Sign In'
+              "Sign In"
             )}
           </button>
         </form>

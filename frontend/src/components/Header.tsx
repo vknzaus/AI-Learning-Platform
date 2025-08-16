@@ -68,14 +68,22 @@ export const Header = ({
                   <div className="hidden md:flex items-center space-x-3">
                     {/* Gems */}
                     <div className="flex items-center space-x-1 px-3 py-2 rounded-lg bg-slate-700 hover:bg-slate-600 transition-all duration-200 cursor-pointer">
-                      <span className="text-blue-400 text-lg animate-pulse">💎</span>
-                      <span className="text-blue-300 font-semibold text-sm">{user.gems}</span>
+                      <span className="text-blue-400 text-lg animate-pulse">
+                        💎
+                      </span>
+                      <span className="text-blue-300 font-semibold text-sm">
+                        {user.gems}
+                      </span>
                     </div>
 
                     {/* Hearts */}
                     <div className="flex items-center space-x-1 px-3 py-2 rounded-lg bg-slate-700 hover:bg-slate-600 transition-all duration-200 cursor-pointer">
-                      <span className="text-red-400 text-lg animate-pulse">❤️</span>
-                      <span className="text-red-300 font-semibold text-sm">{user.hearts}</span>
+                      <span className="text-red-400 text-lg animate-pulse">
+                        ❤️
+                      </span>
+                      <span className="text-red-300 font-semibold text-sm">
+                        {user.hearts}
+                      </span>
                     </div>
 
                     {/* User Profile Dropdown */}
@@ -92,13 +100,21 @@ export const Header = ({
                   {/* Default gems and hearts for non-signed-in users */}
                   <div className="hidden md:flex items-center space-x-4">
                     <div className="flex items-center space-x-1 px-3 py-2 rounded-lg bg-slate-700 hover:bg-slate-600 transition-all duration-200 cursor-pointer">
-                      <span className="text-blue-400 text-lg animate-pulse">💎</span>
-                      <span className="text-blue-300 font-semibold text-sm">0</span>
+                      <span className="text-blue-400 text-lg animate-pulse">
+                        💎
+                      </span>
+                      <span className="text-blue-300 font-semibold text-sm">
+                        0
+                      </span>
                     </div>
 
                     <div className="flex items-center space-x-1 px-3 py-2 rounded-lg bg-slate-700 hover:bg-slate-600 transition-all duration-200 cursor-pointer">
-                      <span className="text-red-400 text-lg animate-pulse">❤️</span>
-                      <span className="text-red-300 font-semibold text-sm">0</span>
+                      <span className="text-red-400 text-lg animate-pulse">
+                        ❤️
+                      </span>
+                      <span className="text-red-300 font-semibold text-sm">
+                        0
+                      </span>
                     </div>
 
                     {/* Sign In Button */}
@@ -131,9 +147,9 @@ export const Header = ({
       </header>
 
       {/* Sign In Modal */}
-      <SignInModal 
-        isOpen={isSignInModalOpen} 
-        onClose={() => setIsSignInModalOpen(false)} 
+      <SignInModal
+        isOpen={isSignInModalOpen}
+        onClose={() => setIsSignInModalOpen(false)}
       />
     </>
   );
