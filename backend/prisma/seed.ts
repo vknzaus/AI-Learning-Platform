@@ -5,47 +5,39 @@ const prisma = new PrismaClient();
 async function main() {
   console.log("🌱 Starting database seed...");
 
-  // Create Topics
+  // Create only one Topic: Learn AI
   const aiTopic = await prisma.topic.create({
     data: {
-      name: "AI Fundamentals",
-      description: "Basic concepts and principles of Artificial Intelligence",
+      name: "Learn AI",
+      description: "Fun and interactive introduction to Artificial Intelligence concepts",
       orderIndex: 1,
     },
   });
 
-  const mlTopic = await prisma.topic.create({
-    data: {
-      name: "Machine Learning",
-      description: "Introduction to Machine Learning algorithms and techniques",
-      orderIndex: 2,
-    },
-  });
-
-  // Create Lessons
+  // Create Lessons for Learn AI
   const aiBasicsLesson = await prisma.lesson.create({
     data: {
       topicId: aiTopic.id,
       title: "What is Artificial Intelligence?",
-      description: "Learn the fundamental concepts of AI and its applications",
+      description: "Discover the amazing world of AI and how it works",
       difficulty: Difficulty.BEGINNER,
       orderIndex: 1,
       prerequisites: [],
     },
   });
 
-  const mlBasicsLesson = await prisma.lesson.create({
+  const aiApplicationsLesson = await prisma.lesson.create({
     data: {
-      topicId: mlTopic.id,
-      title: "Introduction to Machine Learning",
-      description: "Understanding the basics of machine learning",
+      topicId: aiTopic.id,
+      title: "AI in Everyday Life",
+      description: "Explore how AI is already part of your daily routine",
       difficulty: Difficulty.BEGINNER,
-      orderIndex: 1,
+      orderIndex: 2,
       prerequisites: [aiBasicsLesson.id],
     },
   });
 
-  // Create Sample Questions
+  // Create Sample Questions for Learn AI
   const questions = [
     {
       lessonId: aiBasicsLesson.id,
@@ -54,7 +46,7 @@ async function main() {
         question: "What does AI stand for?",
         options: [
           "Artificial Intelligence",
-          "Automated Integration",
+          "Automated Integration", 
           "Advanced Interface",
           "Applied Innovation",
         ],
@@ -86,89 +78,24 @@ async function main() {
       orderIndex: 2,
     },
     {
-      lessonId: aiBasicsLesson.id,
-      type: QuestionType.FILL_BLANK,
+      lessonId: aiApplicationsLesson.id,
+      type: QuestionType.MULTIPLE_CHOICE,
       content: {
-        text: "Machine Learning is a subset of {{blank1}} that enables computers to {{blank2}} without being explicitly programmed.",
-        blanks: [
-          {
-            id: "blank1",
-            acceptedAnswers: [
-              "AI",
-              "Artificial Intelligence",
-              "artificial intelligence",
-            ],
-            caseSensitive: false,
-            position: 1,
-          },
-          {
-            id: "blank2",
-            acceptedAnswers: ["learn", "improve", "adapt"],
-            caseSensitive: false,
-            position: 2,
-          },
+        question: "Which of these is an example of AI in everyday life?",
+        options: [
+          "Voice assistants like Siri",
+          "Recommendation systems on Netflix",
+          "Photo tagging on social media",
+          "All of the above",
         ],
       },
       correctAnswer: {
-        blanks: {
-          blank1: ["AI", "Artificial Intelligence"],
-          blank2: ["learn", "improve"],
-        },
+        correctIndices: [3],
       },
       explanation:
-        "Machine Learning is indeed a subset of AI that focuses on algorithms that can learn and improve from data.",
-      difficulty: Difficulty.INTERMEDIATE,
-      points: 15,
-      orderIndex: 3,
-    },
-    {
-      lessonId: mlBasicsLesson.id,
-      type: QuestionType.MATCHING,
-      content: {
-        leftItems: [
-          { id: "supervised", content: "Supervised Learning", type: "text" },
-          {
-            id: "unsupervised",
-            content: "Unsupervised Learning",
-            type: "text",
-          },
-          {
-            id: "reinforcement",
-            content: "Reinforcement Learning",
-            type: "text",
-          },
-        ],
-        rightItems: [
-          {
-            id: "labeled",
-            content: "Uses labeled training data",
-            type: "text",
-          },
-          {
-            id: "patterns",
-            content: "Finds hidden patterns in data",
-            type: "text",
-          },
-          {
-            id: "rewards",
-            content: "Learns through rewards and penalties",
-            type: "text",
-          },
-        ],
-        instructions:
-          "Match each type of machine learning with its correct description.",
-      },
-      correctAnswer: {
-        pairs: {
-          supervised: "labeled",
-          unsupervised: "patterns",
-          reinforcement: "rewards",
-        },
-      },
-      explanation:
-        "Supervised learning uses labeled data, unsupervised learning finds patterns in unlabeled data, and reinforcement learning uses a reward system.",
-      difficulty: Difficulty.INTERMEDIATE,
-      points: 20,
+        "All of these are examples of AI in everyday life! AI is all around us, making our digital experiences smarter and more personalized.",
+      difficulty: Difficulty.BEGINNER,
+      points: 10,
       orderIndex: 1,
     },
   ];
