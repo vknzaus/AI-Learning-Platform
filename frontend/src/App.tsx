@@ -27,6 +27,7 @@ import { Sidebar } from "./components/Sidebar";
 import { Practice } from "./components/Practice";
 import { Leaderboards } from "./components/Leaderboards";
 import { Profile } from "./components/Profile";
+import { AuthProvider } from "./contexts/AuthContext";
 import "./App.css";
 
 function App() {
@@ -148,137 +149,143 @@ function App() {
   // ============================================================================
 
   return (
-    <div className="min-h-screen bg-gray-900 relative">
-      {/* Sidebar - Overlay positioned */}
-      <Sidebar
-        isOpen={sidebarOpen}
-        onToggle={() => setSidebarOpen(!sidebarOpen)}
-        onNavigate={handleNavigation}
-        currentSection={currentSection}
-      />
-
-      {/* Main Content Area - Fixed width, no shifting */}
-      <div className="flex flex-col min-h-screen">
-        {/* Header */}
-        <Header
-          onMenuToggle={() => setSidebarOpen(!sidebarOpen)}
-          isSidebarOpen={sidebarOpen}
+    <AuthProvider>
+      <div className="min-h-screen bg-gray-900 relative">
+        {/* Sidebar - Overlay positioned */}
+        <Sidebar
+          isOpen={sidebarOpen}
+          onToggle={() => setSidebarOpen(!sidebarOpen)}
+          onNavigate={handleNavigation}
+          currentSection={currentSection}
         />
 
-        {/* Main Content */}
-        <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
-          {currentSection === "dashboard" && (
-            <>
-              {/* Topics Section */}
-              <div className="mb-16">
-                <div className="text-center mb-10">
-                  <h2 className="text-4xl font-black text-white mb-4">
-                    🌟 Available Courses
-                  </h2>
-                  <p className="text-lg text-gray-400 max-w-2xl mx-auto font-medium">
-                    Start your AI journey with these fun, bite-sized courses! 🚀
-                  </p>
+        {/* Main Content Area - Fixed width, no shifting */}
+        <div className="flex flex-col min-h-screen">
+          {/* Header */}
+          <Header
+            onMenuToggle={() => setSidebarOpen(!sidebarOpen)}
+            isSidebarOpen={sidebarOpen}
+          />
+
+          {/* Main Content */}
+          <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+            {currentSection === "dashboard" && (
+              <>
+                {/* Topics Section */}
+                <div className="mb-16">
+                  <div className="text-center mb-10">
+                    <h2 className="text-4xl font-black text-white mb-4">
+                      🌟 Available Courses
+                    </h2>
+                    <p className="text-lg text-gray-400 max-w-2xl mx-auto font-medium">
+                      Start your AI journey with these fun, bite-sized courses!
+                      🚀
+                    </p>
+                  </div>
+
+                  {topics.length > 0 ? (
+                    <div className="flex justify-center">
+                      <div className="grid grid-cols-1 gap-6 max-w-md mx-auto">
+                        {topics.map((topic) => (
+                          <TopicCard
+                            key={topic.id}
+                            topic={topic}
+                            onStartLearning={handleStartLearning}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="text-center py-12">
+                      <div className="bg-slate-800 border-2 border-yellow-600 rounded-3xl p-12 max-w-lg mx-auto fun-card">
+                        <div className="text-6xl mb-4">🔍</div>
+                        <h3 className="text-2xl font-black text-white mb-3">
+                          No courses available yet!
+                        </h3>
+                        <p className="text-gray-400 font-medium mb-6">
+                          Our amazing courses are being prepared. Check back
+                          soon!
+                        </p>
+                        <button
+                          onClick={handleRetry}
+                          className="bg-yellow-500 hover:bg-yellow-600 text-yellow-900 font-black px-6 py-3 rounded-2xl transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl duo-button"
+                        >
+                          🔄 Refresh
+                        </button>
+                      </div>
+                    </div>
+                  )}
                 </div>
+              </>
+            )}
 
-                {topics.length > 0 ? (
-                  <div className="flex justify-center">
-                    <div className="grid grid-cols-1 gap-6 max-w-md mx-auto">
-                      {topics.map((topic) => (
-                        <TopicCard
-                          key={topic.id}
-                          topic={topic}
-                          onStartLearning={handleStartLearning}
-                        />
-                      ))}
-                    </div>
+            {currentSection === "learn-ai" && (
+              <>
+                {/* Topics Section for Learn AI */}
+                <div className="mb-16">
+                  <div className="text-center mb-10">
+                    <h2 className="text-4xl font-black text-white mb-4">
+                      🤖 Learn AI
+                    </h2>
+                    <p className="text-lg text-gray-400 max-w-2xl mx-auto font-medium">
+                      Master AI fundamentals with interactive lessons! 🎓
+                    </p>
                   </div>
-                ) : (
-                  <div className="text-center py-12">
-                    <div className="bg-slate-800 border-2 border-yellow-600 rounded-3xl p-12 max-w-lg mx-auto fun-card">
-                      <div className="text-6xl mb-4">🔍</div>
-                      <h3 className="text-2xl font-black text-white mb-3">
-                        No courses available yet!
-                      </h3>
-                      <p className="text-gray-400 font-medium mb-6">
-                        Our amazing courses are being prepared. Check back soon!
-                      </p>
-                      <button
-                        onClick={handleRetry}
-                        className="bg-yellow-500 hover:bg-yellow-600 text-yellow-900 font-black px-6 py-3 rounded-2xl transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl duo-button"
-                      >
-                        🔄 Refresh
-                      </button>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </>
-          )}
 
-          {currentSection === "learn-ai" && (
-            <>
-              {/* Topics Section for Learn AI */}
-              <div className="mb-16">
-                <div className="text-center mb-10">
-                  <h2 className="text-4xl font-black text-white mb-4">
-                    🤖 Learn AI
-                  </h2>
-                  <p className="text-lg text-gray-400 max-w-2xl mx-auto font-medium">
-                    Master AI fundamentals with interactive lessons! 🎓
-                  </p>
+                  {topics.length > 0 ? (
+                    <div className="flex justify-center">
+                      <div className="grid grid-cols-1 gap-6 max-w-md mx-auto">
+                        {topics.map((topic) => (
+                          <TopicCard
+                            key={topic.id}
+                            topic={topic}
+                            onStartLearning={handleStartLearning}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="text-center py-12">
+                      <div className="bg-slate-800 border-2 border-yellow-600 rounded-3xl p-12 max-w-lg mx-auto fun-card">
+                        <div className="text-6xl mb-4">🔍</div>
+                        <h3 className="text-2xl font-black text-white mb-3">
+                          No courses available yet!
+                        </h3>
+                        <p className="text-gray-400 font-medium mb-6">
+                          Our amazing AI courses are being prepared. Check back
+                          soon!
+                        </p>
+                        <button
+                          onClick={handleRetry}
+                          className="bg-yellow-500 hover:bg-yellow-600 text-yellow-900 font-black px-6 py-3 rounded-2xl transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl duo-button"
+                        >
+                          🔄 Refresh
+                        </button>
+                      </div>
+                    </div>
+                  )}
                 </div>
+              </>
+            )}
 
-                {topics.length > 0 ? (
-                  <div className="flex justify-center">
-                    <div className="grid grid-cols-1 gap-6 max-w-md mx-auto">
-                      {topics.map((topic) => (
-                        <TopicCard
-                          key={topic.id}
-                          topic={topic}
-                          onStartLearning={handleStartLearning}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                ) : (
-                  <div className="text-center py-12">
-                    <div className="bg-slate-800 border-2 border-yellow-600 rounded-3xl p-12 max-w-lg mx-auto fun-card">
-                      <div className="text-6xl mb-4">🔍</div>
-                      <h3 className="text-2xl font-black text-white mb-3">
-                        No courses available yet!
-                      </h3>
-                      <p className="text-gray-400 font-medium mb-6">
-                        Our amazing AI courses are being prepared. Check back
-                        soon!
-                      </p>
-                      <button
-                        onClick={handleRetry}
-                        className="bg-yellow-500 hover:bg-yellow-600 text-yellow-900 font-black px-6 py-3 rounded-2xl transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl duo-button"
-                      >
-                        🔄 Refresh
-                      </button>
-                    </div>
-                  </div>
-                )}
+            {currentSection === "practice" && <Practice />}
+            {currentSection === "leaderboards" && <Leaderboards />}
+            {currentSection === "profile" && <Profile />}
+            {currentSection === "settings" && (
+              <div className="text-center py-20">
+                <div className="text-6xl mb-4">⚙️</div>
+                <h2 className="text-4xl font-black text-white mb-4">
+                  Settings
+                </h2>
+                <p className="text-lg text-gray-400">
+                  Settings panel coming soon!
+                </p>
               </div>
-            </>
-          )}
-
-          {currentSection === "practice" && <Practice />}
-          {currentSection === "leaderboards" && <Leaderboards />}
-          {currentSection === "profile" && <Profile />}
-          {currentSection === "settings" && (
-            <div className="text-center py-20">
-              <div className="text-6xl mb-4">⚙️</div>
-              <h2 className="text-4xl font-black text-white mb-4">Settings</h2>
-              <p className="text-lg text-gray-400">
-                Settings panel coming soon!
-              </p>
-            </div>
-          )}
-        </main>
+            )}
+          </main>
+        </div>
       </div>
-    </div>
+    </AuthProvider>
   );
 }
 
