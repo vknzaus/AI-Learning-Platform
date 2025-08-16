@@ -137,9 +137,6 @@ export const FunLabsLogo: React.FC<FunLabsLogoProps> = ({
           `}>
             FunLabs
           </h1>
-          <p className="text-xs text-duogray-600 font-bold -mt-1 opacity-80 group-hover:opacity-100 transition-opacity duration-300">
-            🚀 AI Learning
-          </p>
         </div>
       )}
 

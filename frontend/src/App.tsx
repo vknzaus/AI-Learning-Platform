@@ -64,6 +64,7 @@ function App() {
       setError(null);
       
       console.log('🎯 Topics state updated, length:', topics.length);
+      console.log('🔗 Connection status:', connectionStatus);
     } catch (err) {
       console.error('❌ Error fetching topics:', err);
       setConnectionStatus('disconnected');
@@ -76,7 +77,7 @@ function App() {
   useEffect(() => {
     console.log('🔄 App initialized - fetching data...');
     fetchTopics();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // ============================================================================
   // EVENT HANDLERS
@@ -153,9 +154,6 @@ function App() {
       <div className="flex flex-col min-h-screen">
         {/* Header */}
         <Header 
-          connectionStatus={connectionStatus}
-          topicsCount={topics.length}
-          onTestConnection={handleTestConnection}
           onMenuToggle={() => setSidebarOpen(!sidebarOpen)}
           isSidebarOpen={sidebarOpen}
         />
@@ -164,28 +162,6 @@ function App() {
         <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
           {currentSection === 'dashboard' && (
             <>
-              {/* Hero Section - Duolingo inspired */}
-              <div className="text-center mb-12">
-                <div className="mb-8">
-                  <h1 className="text-5xl md:text-6xl font-black mb-6 leading-tight">
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-blue-400 to-purple-400">
-                      Learn AI & ML
-                    </span>
-                  </h1>
-                  
-                  <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed font-medium mb-6">
-                    🚀 Master artificial intelligence through fun, interactive lessons! 
-                    A simple, engaging way to learn complex concepts. 🧠✨
-                  </p>
-                </div>
-                
-                <div className="mb-8">
-                  <button className="bg-gradient-to-r from-teal-500 to-blue-500 hover:from-teal-600 hover:to-blue-600 text-white font-black px-8 py-4 rounded-2xl text-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 border-2 border-white duo-button">
-                    🎯 Start Learning Today
-                  </button>
-                </div>
-              </div>
-
               {/* Topics Section */}
               <div className="mb-16">
                 <div className="text-center mb-10">
