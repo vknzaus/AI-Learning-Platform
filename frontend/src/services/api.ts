@@ -1,7 +1,8 @@
-import { getApiUrl } from "../config/api";
+// Get API base URL from environment variables with fallback
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api";
 
 console.log("API Configuration loaded");
-console.log("Base URL:", getApiUrl(""));
+console.log("Base URL:", API_BASE_URL);
 console.log("Current hostname:", window.location.hostname);
 
 export interface Topic {
@@ -27,7 +28,7 @@ export interface Lesson {
 export const topicsApi = {
   getAll: async (): Promise<{ data: Topic[] }> => {
     try {
-      const url = getApiUrl("/topics");
+      const url = `${API_BASE_URL}/topics`;
       console.log("Fetching from:", url);
 
       const response = await fetch(url, {
